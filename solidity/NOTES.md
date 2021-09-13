@@ -16,5 +16,8 @@
     - running `npx hardhat accounts` will generate a bunch of fake ethereum addresses that can be used to simulate real users on the blockchain
 
 
+# EVM - Ethereum Virtual Machine
+- The EVM is the runtime for smart contract in ethereum. The EVM is completely isolated in the sense that code running inside it provides no access to network, filesystem or other processes. Smart contracts do have limited access to other smart contracts
+
 # Ideas
 - `hardhat` VSCode extension
