@@ -14,6 +14,10 @@ node scripts/sample-script.js
 npx hardhat help
 ```
 
+## Commands
+- `npx hardhat node`
+  - starts a local ethereum network that stays alive. Hardhat also creates 20 accounts that can be used with this local network
+
 # Test Account Addresses
 ```
 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
