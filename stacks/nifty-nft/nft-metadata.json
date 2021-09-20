@@ -1,0 +1,18 @@
+{
+    "title": "Asset Metadata",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Nifty NFT"
+        },
+        "description": {
+            "type": "string",
+            "description": "STX NFT Test"
+        },
+        "image": {
+            "type": "string",
+            "description": "https://www.pikpng.com/transpng/JwbRhR/"
+        }
+    }
+}
