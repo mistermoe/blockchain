@@ -19,14 +19,14 @@ async function main() {
     // wait until contract is officially deployed
     await waveContract.deployed();
     
-    console.log(`Contract deployed to: [${waveContract.address}] by [${owner.address}]`);
+    console.log(`Contract deployed to -> [${waveContract.address}] by [${owner.address}]`);
 
     // interact with contract as owner
     let waveCount = await waveContract.getTotalWaves();
     log(`wave count: ${waveCount}`);
     
     console.log('waving...');
-    const waveTxn = await waveContract.wave();
+    const waveTxn = await waveContract.wave('Hallow!');
     await waveTxn.wait();
     log('waved.');
 
@@ -36,11 +36,14 @@ async function main() {
     // interact with contract as `randoMcRandy`
     log(`${randoMcRandy.address} fixing to interact with contract...`);
     
-    const randyWaveTxn = await waveContract.connect(randoMcRandy).wave();
+    const randyWaveTxn = await waveContract.connect(randoMcRandy).wave('Harro from Rando McRandy!');
     await randyWaveTxn.wait();
 
     waveCount = await waveContract.getTotalWaves();
     log(`wave count: ${waveCount}`);
+
+    const wavesList = await waveContract.getAllWaves();
+    log(wavesList);
 }
 
 function log(...args) {
