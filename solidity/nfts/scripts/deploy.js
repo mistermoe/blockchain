@@ -1,4 +1,4 @@
-// this script can be used to run your smart contract locally
+// this script is used to deploy this contract to a blockchain
 const { ethers } = require("hardhat");
 
 async function main() {

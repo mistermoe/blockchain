@@ -19,16 +19,16 @@ contract NFT is ERC721URIStorage {
 
     function mintNFT() public {
         // is this inherently atomic?
-        uint256 newItemID = _tokenIDs.current();
+        uint256 nftID = _tokenIDs.current();
 
         // `msg.sender` is made available by the EVM when a function is called.
         // all globally available variables are listed here:
         // https://docs.soliditylang.org/en/develop/units-and-global-variables.html#block-and-transaction-properties
-        _safeMint(msg.sender, newItemID);
-        _setTokenURI(newItemID, "whateva DAWG");
+        _safeMint(msg.sender, nftID);
+        _setTokenURI(nftID, "https://raw.githubusercontent.com/mistermoe/blockchain/master/solidity/nfts/metadata.json");
+
+        console.log("An NFT w/ ID %s has been minted to %s", nftID, msg.sender);
 
         _tokenIDs.increment();
     }
-
-
 }
