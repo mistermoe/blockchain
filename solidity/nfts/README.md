@@ -1,7 +1,7 @@
 # Metadata NFTs
 
 ## Overview
-This project contains a smart contract that leverages the open zeppelin implementation of [ERC721](https://eips.ethereum.org/EIPS/eip-721) to deploy a metadata driven NFT to an ethereum blockchain
+This project contains a smart contract that leverages the open zeppelin implementation of [ERC721](https://eips.ethereum.org/EIPS/eip-721) to deploy an "off-chain" NFT to an ethereum blockchain
 
 ## Local Development
 Running the following will compile, deploy, and mine the `NFT.sol` smart contract under `contracts/` to a blockchain running locally:
