@@ -32,9 +32,3 @@
   - use SDEX to convert XLM to Dollars by finding the best rate and submitting a buy order
   - use SDEX to convert Dollars to Euros by doing the same thing and submitting a buy order
 - This took me about ~2h to do and i had to pay 3 fees (albeit very small). Then, about 30 minutes later i learned about path payments tucked away in some obscure example in the golang SDK repo. Path payments simplify the process by eliminating the need for the sender to have a trustline, and by bundling transfer and conversion into a single operation that incurs a single fee. This reduces the overhead and complexity involved in navigating trustlines and the SDEX, and allows a user to easily take advantage of the multiplicity of Stellar assets
-
-- [Account Info](https://stellar.expert/explorer/public/account/GCB2YU2RIHR6DWWQXYWK3ICBSEMMWW2OGA5TRKLGWM54KXPXBRBKE3B3)
-
-## Transactions
-- (Account creation txn)[https://stellar.expert/explorer/public/tx/136dabd7d2852fe4b9b55da39baedd821ea274b1a3f3d2c5b0f77c520afcc969]
-- (Establish USD trustline w/ AnchorUSD txn)[https://stellar.expert/explorer/public/tx/3b3ac001426d3386fe893de6b253a781ead12f41437fc8ff7ff54bfc2b65b62e]
