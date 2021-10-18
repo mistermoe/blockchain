@@ -1,3 +1,4 @@
+import ms from 'ms';
 import ora from 'ora';
 import prompts from 'prompts';
 import { Asset, Keypair, Server, NotFoundError, TransactionBuilder, Operation } from 'stellar-sdk';
@@ -37,7 +38,7 @@ async function main() {
         {
             type: 'select',
             name: 'destAsset',
-            message: 'What currency do you want the destination to receive in the destination currency?',
+            message: 'What currency do you want the destination to receive?',
             choices: [
               { title: 'USD', value: ASSETS.USD },
               { title: 'GBP', value: ASSETS.GBP  },
@@ -47,7 +48,7 @@ async function main() {
         {
             type: 'number',
             name: 'destAmount',
-            message: 'How much do you want the destination to receive?',
+            message: 'How much do you want to send?',
             initial: 0,
             float: true,
             style: 'default'
@@ -91,11 +92,14 @@ async function main() {
     transaction.sign(sourceKeypair);
     
     const spinner = ora(`Sending ${req.destAmount} ${req.destAsset.code} to [${req.destAddress}]...`).start();
+    const startTime = Date.now();
     
     //! TODO: add error handling
     const resp = await server.submitTransaction(transaction);
+    const timeTaken = Date.now() - startTime;
 
-    spinner.succeed(`${req.destAmount} ${req.destAsset.code} sent to ${req.destAddress}! txn id -> ${resp.hash}`);
+    //! TODO: output fee
+    spinner.succeed(`(${ms(timeTaken)}) ${req.destAmount} ${req.destAsset.code} sent to ${req.destAddress}! txn id -> ${resp.hash}`);
     
 }
 
@@ -112,9 +116,10 @@ async function getAccount(publicKey) {
 }
 
 async function getBestReceivePath(sourceAsset, sourceAmt, destAsset) {
-    const paths = await server.strictReceivePaths(sourceAsset, sourceAmt, destAsset);
-
+    // naively choose first path for now
     //! TODO: find best path after bug is fixed in `strictReceivePath`
+    const [ path ] = await server.strictReceivePaths(sourceAsset, sourceAmt, destAsset);
+    return path;
 }
 
 (async () => {
